@@ -10,24 +10,19 @@
                      {!! Form::model($lembur_pegawai,['method'=>'PATCH','route'=>['lembur_pegawai.update',$lembur_pegawai->id]])!!}
                     <div class="col-md-6">
                         <label>Kode Lembur ID</label>
-                        <input type="text" name="kode_jabatan" class="form-control" value="{{$lembur_pegawai->kode_jabatan}}" >
+                        <input type="text" name="kode_jabatan" class="form-control" value="{{$lembur_pegawai->kategori_lemburModel->kode_lembur_id}}" >
                         <span class="help-block">
-                            <strong>{{ $errors->first('kode_jabatan') }}</strong>
+                            <strong>{{ $errors->first('kode_lembur_id') }}</strong>
                         </span>
                     </div>
-                    <div class="col-md-6">
-                        <label>Jabatan</label>
-                        <input type="text" name="nama_jabatan" class="form-control" value="{{$jabatan->nama_jabatan}}" >
-                        <span class="help-block">
-                            <strong>{{ $errors->first('nama_jabatan') }}</strong>
-                        </span>
-                    </div>
-                    <div class="col-md-12">
-                        <label>Besaran Uang</label>
-                        <input type="text" name="besaran_uang" class="form-control" value="{{$jabatan->besaran_uang}}" >
-                        <span class="help-block">
-                            <strong>{{ $errors->first('besaran_uang') }}</strong>
-                        </span>
+                   <div class="col-md-6">
+                        {!! Form::label('Jumlah Jam', 'Jumlah Jam') !!}
+                        {!! Form::text('jumlah_jam',null,['class'=>'form-control']) !!}
+                          @if ($errors->has('jumlah_jam'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('jumlah_jam') }}</strong>
+                                    </span>
+                            @endif
                     </div>
                     <div class="col-md-12"></div>
                     <div class="col-md-12">

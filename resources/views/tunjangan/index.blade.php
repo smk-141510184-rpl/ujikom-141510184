@@ -2,7 +2,7 @@
 @section('content')
 <center><h1>Data tunjangan pegawai</h1></center>
 <hr>
-<div class="col-md-11"></div>
+<div class="col-md-11">
 <table class="table table-striped table bordered table-hover">
 <table class="table table-default">
 <tr class="danger">
@@ -49,7 +49,7 @@
 
 	</tbody>
 </table>
-
+</div>
 
 
 

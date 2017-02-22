@@ -18,7 +18,8 @@
                                     </span>
                             @endif
                     </div>
-                     <div class="col-md-6 col-sm-6 col-xs-12">
+                     <div class="col-md-6 col-sm-6 ">
+                     <label for="Jabatan">Jabatan</label>
                         <select class="form-control" col-md-7 col-sx-12 name="jabatan_id">
                             @foreach ($jabatan as $jabatans)
                             <option value="{{$jabatans->id}}">{{ $jabatans->nama_jabatan}}</option>
@@ -26,14 +27,15 @@
                         </select>
                     </div>
                     </div>
-                      <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="col-md-6 col-sm-6">
+                      <label for="Golongan">Golongan</label>
                         <select class="form-control" col-md-7 col-sx-12 name="golongan_id">
                             @foreach ($golongan as $jabatans)
                             <option value="{{$jabatans->id}}">{{ $jabatans->nama_golongan}}</option>
                             @endforeach
                         </select>
                     </div>                    
-                    <div class="form-group">
+                    <div class=" col-md-6 form-group">
                         {!! Form::label('besaran uang', 'besaran uang') !!}
                         {!! Form::text('besaran_uang',null,['class'=>'form-control']) !!}
                     </div>

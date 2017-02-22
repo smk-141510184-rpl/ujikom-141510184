@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<style type="text/css">
+    body {
+    background-image: url("large.jpg");
+}
+    .panel-body{
+        color: #663333;
+    }
+</style>
+<body>
 @extends('layouts.app')
 
 @section('content')
@@ -88,3 +102,5 @@
     </div>
 </div>
 @endsection
+</body>
+</html>

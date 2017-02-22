@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Golongan</title>
+</head>
+<body>
 @extends('layouts.app')
 @section('content')
 <div class="col-md-3 col-offset-1">
@@ -109,3 +115,6 @@
 </div>
 
 @endsection
+
+</body>
+</html>

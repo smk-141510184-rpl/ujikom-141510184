@@ -1,8 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pegawai</title>
+</head>
+<style type="text/css">
+    .panel-body{
+        color: #663333;
+    }
+</style>
+<body>
 @extends('layouts/app')
 @section('content')
 <center><h1>Pegawai</h1></center>
 <hr>
-<div class="col-md-9 ">
+<div class="col-md-11">
 <table class="table table-striped table bordered table-hover">
 <!-- <table class="table table-default"> -->
 <tr class="danger">
@@ -35,7 +46,7 @@
 			<td>{{$pegawais->jabatanModel->nama_jabatan}}</td>
 			<td>{{$pegawais->golonganModel->nama_golongan}}</td>
 			
-	<td><img src="assets/image/{{$pegawais->foto}}" width="50" height="50"></td>
+	<td><img src="assets/image/{{$pegawais->foto}}" class="img-circle" alt="Cinque Terre" width="50" height="50"></td>
 
 		<td><a href="{{route('pegawai.edit',$pegawais->id)}}"class="btn btn-warning">edit</a></td>	
 		</td>
@@ -52,8 +63,8 @@
 
 	</tbody>
 </table>
-
-
-
+</div>
 
 @endsection
+</body>
+</html>

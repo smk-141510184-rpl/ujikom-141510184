@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class pegawaiModel extends Model
 {
 	protected $table='pegawai';
+	protected $fillable=['id','nip','user_id','jabatan_id','golongan_id','foto'];
 	
 
     public function golonganModel()

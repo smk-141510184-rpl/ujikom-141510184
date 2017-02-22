@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Jabatan</title>
+</head>
+<body>
 @extends('layouts.app')
 @section('content')
 <div class="col-md-3 col-md-offset-1">
@@ -118,3 +124,6 @@
 </div>
 
 @endsection
+
+</body>
+</html>

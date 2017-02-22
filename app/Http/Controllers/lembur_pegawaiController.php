@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\lembur_pegawaiModel;
 use App\pegawaiModel;
+use App\jabatanModel;
+use App\golonganModel;
 use Request;
 use Validator ;
 use App\kategori_lemburModel ;
@@ -89,8 +91,10 @@ class lembur_pegawaiController extends Controller
     public function edit($id)
     {
         //
-        $lembur_pegawai=lembur_pegawaiModel::all();
-        return view('lembur_pegawai.edit',compact('lembur_pegawai'));
+        $jabatan=jabatanModel::all();
+        $golongan=golonganModel::all();
+        $lembur_pegawai=lembur_pegawaiModel::find($id);
+        return view('lembur_pegawai.edit',compact('lembur_pegawai','jabatan','golongan'));
     }
 
     /**

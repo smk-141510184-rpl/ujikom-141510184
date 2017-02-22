@@ -195,14 +195,37 @@ class pegawaiController extends Controller
             ->withInput();
 
         }
-        $update=Request::all();
-        $pegawai=User::find($id);
+        //$update=Request::all();
+        //$pegawai=User::find($id);
         // // $user=User::where('id',$pegawai->user_id) ;
         // // dd($user);
         // // $user=User::find($pegawai->user_id);
         // $user->update($update);
-        $pegawai->update($update);
+        //$pegawai->update($update);
+        //return redirect('pegawai');
+
+        $user=User::find($pegawai->user_id);
+        $user->name = Request('name');
+        $user->type_user = Request('permision');
+        $user->email = Request('email');
+        $user->save();
+        
+        $file= Input::file('foto');
+        $destination= '/assets/image/';
+        $filename=$file->getClientOriginalName();
+        $uploadsuccess=$file->move($destination,$filename);
+        if($uploadsuccess){
+
+        
+            $pegawai =Pegawai::find($id);
+            $pegawai->nip = Request('nip');
+            $pegawai->permision = $user->id;
+            $pegawai->jabatan_id = Request('jabatan_id');
+            $pegawai->golongan_id = Request('golongan_id');
+            $pegawai->foto=$filename;
+            $pegawai->update();
         return redirect('pegawai');
+        }
     }
 
     /**

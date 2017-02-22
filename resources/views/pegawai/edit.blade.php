@@ -11,6 +11,43 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3>Tambah Data Pegawai</h3> </div>
                         <div class="panel-body">
+                        {!!Form::model($pegawai,['method'=>'PATCH','route'=>['pegawai.update',$pegawai->id],'enctype'=>'multipart/form-data'])!!}
+                        <div class="col-md-6">
+                                <label for="name" >Nama Pegawai</label>
+                                <input id="name" type="name" class="form-control" name="name" value="{{$pegawai->User->name}}">
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" >E-MAIL</label>
+                                <input id="email" type="email" class="form-control"  name="email" value="{{$pegawai->User->email}}" >
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        <div class="col-md-6">
+                                <label >Type User Lama</label>
+                                   <input type="text" class="form-control" value="{{$pegawai->User->permision}}" readonly>
+                            </div>
+
+                        <div class="col-md-6">
+                                <label >Type User</label>
+                                   <select id="permision" type="text" class="form-control" name="permision" value="{{$pegawai->User->permision }}" autofocus class="col-md-12 form-control">
+                                        <option></option>
+                                       <option>Admin</option>
+                                       <option>HRD</option>
+                                       <option>Bagian Administrasi</option>
+                                       <option>Pegawai</option>
+                                   </select>
+                            </div>
 
                             <div class="col-md-12">
                                 <label for="nip" >NIP Pegawai</label>

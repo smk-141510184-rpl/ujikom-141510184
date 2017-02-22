@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lembur Pegawai</title>
+</head>
+<body>
 @extends('layouts/app')
 @section('content')
 <center><h1>Data lembur pegawai</h1></center>
@@ -49,8 +55,6 @@
 
 	</tbody>
 </table>
-
-
-
-
 @endsection
+</body>
+</html>
