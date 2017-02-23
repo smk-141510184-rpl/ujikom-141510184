@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class tunjanganModel extends Model
 {
     protected $table='tunjangan';
-	protected $fillable=array('kode_tunjangan','jabatan_id','golongan_id','status','jumlah_anak','besaran_uang');
+	protected $fillable=array('id','kode_tunjangan','jabatan_id','golongan_id','status','jumlah_anak','besaran_uang');
 	protected $visible=array('kode_tunjangan','jabatan_id','golongan_id','status','jumlah_anak','besaran_uang');
 
 	public function jabatanModel()

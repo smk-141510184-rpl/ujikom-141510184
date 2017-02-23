@@ -5,22 +5,21 @@
 <head>
 	<title>Jabatan</title>
     <style type="text/css">
-    body {
+    div{
     background-image: url("large.jpg");
-}
-    .panel-body, .panel-heading{
+    }
+    .panel-body{
+
         color: #663333;
     }
-    .panel-default {
+    .panel-default{
      border: 2px solid black;
      background-color: #99CCFF;
      box-shadow: 7px 7px 10px;
    }
 </style>
 </head>
-
 <body>
-
 <div class="col-md-3 ">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -84,11 +83,9 @@
 	<div class="row">
 		<div class="col-md-8">
 		<div class="panel panel-default">
-			<div class="panel-heading"><center><h1>Jabatan</h1></center></div>
+			<div class="panel-heading"><center><h1><font color="#FF0000">Jabatan</font></h1></center></div>
                 <div class="panel-body">
-                	<table class="table table-striped table bordered table-hover">
-					<table class="table table-hover table-striped ">
-					<tr class="danger">
+					<table class="table table-hover table-striped table-bordered">	
 				<a href="{{url('/jabatan/create')}}"class="btn btn-primary form-control">Tambah Data</a><br><br>
 				{{$jabatan->links()}}
 		<thead>

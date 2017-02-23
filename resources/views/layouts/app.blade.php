@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-6">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,6 +20,13 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <style type="text/css">
+        html,body,div,ul{
+            background-image: url("large.jpg");
+            font-family: 'Athabasca';
+        }
+        
+    </style>
 </head>
 <body>
     <div id="app">

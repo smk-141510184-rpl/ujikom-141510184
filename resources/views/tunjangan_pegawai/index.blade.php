@@ -1,13 +1,14 @@
 @extends('layouts/app')
 @section('content')
-<center><h1>Data tunjangan pegawai</h1></center>
-<hr>
-<div class="col-md-11">
-<table class="table table-striped table bordered table-hover">
-<table class="table table-default">
-<tr class="danger">
-
-<a href="{{url('/tunjangan_pegawai/create')}}"class="btn btn-primary form-control">Tambah Data</a><br><br>
+<div class="container">
+<div class="col-md-10">
+	<div class="panel panel-default">
+	<div class="panel-heading">
+		<center><h1>Data tunjangan pegawai</h1></center>
+	</div>
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-hover">
+<a href="{{url('/tunjangan_pegawai/create')}}" class="btn btn-primary form-control">Tambah Data</a><br><br>
 
 	<thead>
 		<tr class="bg-info">
@@ -39,7 +40,6 @@
 			<td>{{$tunjangan_pegawais->tunjanganModel->jumlah_anak}}</td>
 			<td>{{$tunjangan_pegawais->tunjanganModel->besaran_uang}}</td>
 		<td><a href="{{route('tunjangan_pegawai.edit',$tunjangan_pegawais->id)}}" class="btn btn-warning">Update</a></td>	
-		</td>
 		<td>
 		{!!Form::open(['method'=>'DELETE','route'=>['tunjangan_pegawai.destroy',$tunjangan_pegawais->id]])!!}
 		
@@ -52,6 +52,11 @@
 
 	</tbody>
 </table>
+</div>
+
+
+		</div>
+	</div>
 </div>
 
 

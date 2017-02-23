@@ -30,7 +30,7 @@
 		@foreach($penggajian as $gaji)
 		<tr>
 			<td>{{$no++}}</td>
-			<td>{{$gaji->tunjangan_pegawaiModel->tunjangan_pegawai}}</td>
+			<td>{{$gaji->tunjangan_pegawaiModel->tunjanganModel->besaran_uang}}</td>
 			<td>{{$gaji->$penggajian->jumlah_jam_lembur}}</td>
 			<td>{{$gaji->$penggajian->jumlah_uang_lembur}}</td>
 			<td>{{$gaji->$penggajian->gaji_pokok}}</td>

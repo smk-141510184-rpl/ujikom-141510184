@@ -11,7 +11,7 @@ use App\tunjangan_pegawaiModel;
 use App\tunjanganModel;
 use App\pegawaiModel;
 use Input ;
-use Illuminate\Http\Request;
+use Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Validator;
@@ -40,6 +40,9 @@ class penggajianController extends Controller
     public function create()
     {
         //
+        
+        $tunjangan=tunjangan_pegawaiModel::all();
+        return view('penggajian.create',compact('tunjangan'));
     }
 
     /**
@@ -50,29 +53,12 @@ class penggajianController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Request::all();
-        $penggajian = array();
-        $pegawai = pegawaiModel::where('id',$data['id'])->with('user','lembur_pegawai','golongan','jabatan','tunjangan_pegawai')->first();
 
-        if(!isset($pegawai->tunjangan_pegawai->id))
+        $tunjangan=Input::all();
+        dd($tunjangan);
+        $pegawai=pegawaiModel::all();
+        $lembur_pegawai=lembur_pegawaiModel::all();
 
-        {
-            return redirect('penggajian/'.'create'.'/?errors=notunjangan');
-        }
-        else
-        {
-            $now = Carbon::now();
-            $kode_tunjangan_id = tunjangan_pegawaiModel::where('pegawai_id', $data['id'])->first()->id;
-
-            $penggajian = penggajianModel::where('tunjangan_pegawai_id', $kode_tunjangan_id)->first();
-            if(isset($penggajian->id))
-            {
-            if($penggajian->created_at->month==$now->month)
-            {
-                return redirect('penggajian/create'.'?errors_nutadi');
-            }
-            }
-        }
         if(isset($pegawai->lembur_pegawai->first()->id))
 
         {

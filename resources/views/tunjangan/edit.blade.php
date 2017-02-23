@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-@extends('layouts/app')
+@extends('layouts.app')
 @section('content')
 <head>
-	<title>Lembur Pegawai</title>
-	<style type="text/css">
+    <title>Edit Tunjangan</title>
+    <style type="text/css">
     div{
     background-image: url("large.jpg");
     }
@@ -17,7 +17,7 @@
      background-color: #99CCFF;
      box-shadow: 7px 7px 10px;
    }
-</style>
+    </style>
 </head>
 <body>
 <div class="col-md-3 ">
@@ -78,61 +78,61 @@
         </div>
     </div>
 </div>
-
 <div class="container">
-	<div class="row">
-		<div class="col-md-9">
-			<div class="panel panel-default">
-				<div class="panel-heading"><center><h1><font color="#FF0000">Lembur Pegawai</font></h1></center></div>
-				<div class="panel-body">
-					<table class="table table-striped table bordered table-hover">
-					<a href="{{url('/lembur_pegawai/create')}}"class="btn btn-primary form-control">Tambah Data</a>
-				<br><br>
-				<thead>
-					<tr class="bg-info">
-					<th>No</th>
-					<th><center>kode lembur </center></th>
-					<th colspan="2">Nip Dan Nama Pegawai</th>
-					<th colspan="2">jabatan dan golongan</th>
-					<th><center>jumlah jam</center></th>
-		
-					<th colspan="3">Action</th>
-			
-					</tr>
-				</thead>
-				<tbody>
-				@php
-				$no=1;
-				@endphp
-				@foreach($lembur_pegawai as $lembur_pegawais)
-				<tr>
-					<td>{{$no++}}</td>
-					<td>{{$lembur_pegawais->kode_lembur_id}}</td>
-					<td>{{$lembur_pegawais->pegawaiModel->nip}}
-					<td>{{$lembur_pegawais->pegawaiModel->user->name}}</td>
-					<td>{{$lembur_pegawais->pegawaiModel->jabatanModel->nama_jabatan}}</td>
-					<td>{{$lembur_pegawais->pegawaiModel->golonganModel->nama_golongan}}</td>
-					<td>{{$lembur_pegawais->jumlah_jam}}</td>
-			
-				<td><a href="{{route('lembur_pegawai.edit',$lembur_pegawais->id)}}" class="btn btn-warning">Update</a></td>	
-				</td>
-				<td>
-				{!!Form::open(['method'=>'DELETE','route'=>['lembur_pegawai.destroy',$lembur_pegawais->id]])!!}
-		
-				<input type="submit" class="btn btn-danger" onclick="return confirm('anda yakin akan menghapus data?');"value="Delete"> 
-				{!!Form::close()!!}
-				</td>
-				</tr>
-		
-		@endforeach
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">update tunjangan</div>
+                <div class="panel-body">
 
-				</tbody>
-				</table>
-				</div>
-			</div>
-		</div>
-	</div>
+                {!! Form::model($tunjangan,['method'=>'PATCH','route'=>['tunjangan.update',$tunjangan->id]])!!}
+                     <div class="form-group">
+                        {!! Form::label('kode tunjangan', 'kode tunjangan') !!}
+                        {!! Form::text('kode_tunjangan',null,['class'=>'form-control']) !!}
+                          @if ($errors->has('kode_tunjangan'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kode_lembur') }}</strong>
+                                    </span>
+                            @endif
+                    </div>
+                     <div class="col-md-6 col-sm-6 ">
+                     <label for="Jabatan">Jabatan</label>
+                        <select class="form-control" col-md-7 col-sx-12 name="jabatan_id">
+                            @foreach ($jabatan as $jabatans)
+                            <option value="{{$jabatans->id}}">{{ $jabatans->nama_jabatan}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
+                      <div class="col-md-6 col-sm-6">
+                      <label for="Golongan">Golongan</label>
+                        <select class="form-control" col-md-7 col-sx-12 name="golongan_id">
+                            @foreach ($golongan as $jabatans)
+                            <option value="{{$jabatans->id}}">{{ $jabatans->nama_golongan}}</option>
+                            @endforeach
+                        </select>
+                    </div>                    
+                    <div class=" col-md-6 form-group">
+                        {!! Form::label('besaran uang', 'besaran uang') !!}
+                        {!! Form::text('besaran_uang',null,['class'=>'form-control']) !!}
+                    </div>
+                    @if ($errors->has('besaran_uang'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('besaran_uang') }}</strong>
+                                    </span>
+                    @endif
+                    <div class="form-group">
+                        {!! Form::submit('SAVE', ['class' => 'btn btn-primary form-control']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 @endsection
 </body>
 </html>
+
+
