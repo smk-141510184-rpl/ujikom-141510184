@@ -43,30 +43,19 @@ class lembur_pegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        $rules =['jumlah_jam' => 'required|numeric|min:0',];
-
-        $message =['jumlah_jam.required' => 'Please Input',
-                    'jumlah_jam.numeric' => 'Input Number',
-                    'jumlah_jam.min' => 'Minimal 0',];
-    
-
-            $validate=Validator::make(Input::all(),$rules,$message);
-            if ($validate->fails()) {
-                return redirect('lembur_pegawai/create')->withErrors($validate)->withInput();
-            }
-
-        $lemburpegawai=Request::all();
-            $pegawai=pegawaiModel::where('id',$lemburpegawai['pegawai_id'])->first();
+        $pegawai=pegawaiModel::with('User')->get();
+        $lembur_pegawai=Request::all();
+            $pegawai=pegawaiModel::where('id',$lembur_pegawai['pegawai_id'])->first();
             $check=kategori_lemburModel::where('jabatan_id',$pegawai->jabatan_id)->where('golongan_id',$pegawai->golongan_id)->first();
             // dd($check);
             if (!isset($check->id)) {
-                $kategorilembur=kategori_lemburModel::all();
+                $kategori_lembur=kategori_lemburModel::all();
                 $pegawai=pegawaiModel::all();
                 $error=true;
-                return view('lemburpegawai.create',compact('pegawai','kategorilembur','error'));
+                return view('lembur_pegawai.create',compact('pegawai','kategori_lembur','error'));
             }
-            $lemburpegawai['kode_lembur_id'] = $check->id;
-        lembur_pegawaiModel::create($lemburpegawai);
+            $lembur_pegawai['kode_lembur'] = $check->id;
+        lembur_pegawaiModel::create($lembur_pegawai);
         return redirect('lembur_pegawai');
     }
     

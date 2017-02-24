@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\tunjangan_pegawaiModel;
 use App\tunjanganModel;
 use App\pegawaiModel;
+use App\golonganModel;
+use App\jabatanModel;
 use Input ;
 use Illuminate\Http\Request ;
 class tunjangan_pegawaiController extends Controller
@@ -94,7 +96,9 @@ class tunjangan_pegawaiController extends Controller
     {
         //
         $tunjangan_pegawai=tunjangan_pegawaiModel::all();
-        return view('tunjangan_pegawai.edit',compact('tunjangan_pegawai'));
+        $jabatan=jabatanModel::all();
+        $golongan=golonganModel::all();
+        return view('tunjangan_pegawai.edit',compact('tunjangan_pegawai','jabatan','golongan'));
     }
 
     /**

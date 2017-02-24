@@ -44,16 +44,16 @@ class kategori_lemburController extends Controller
      */
    public function store(Request $request)
     {
-        $definisi=['kode_lembur'=>'required|unique:kategori_lembur',
+        $definisi=['kode_lembur_id'=>'required|unique:kategori_lembur',
                    'besaran_uang'=>'required|numeric|min:0',
                    'jabatan_id'=>'required',
                    'golongan_id'=>'required',
                    ];
 
 
-        $sms=['kode_lembur.required'=>'tidak boleh kosong',
-               'kode_lembur.unique'=>'data tidak boleh sama',
-               'kode_lembur.required'=>'tidak boleh kosong',
+        $sms=['kode_lembur_id.required'=>'tidak boleh kosong',
+               'kode_lembur_id.unique'=>'data tidak boleh sama',
+               'kode_lembur_id.required'=>'tidak boleh kosong',
                'besaran_uang.required'=>'tidak boleh kosong',
                'besaran_uang.numeric'=>'input angka',
                'besaran_uang.min'=>'min 0',

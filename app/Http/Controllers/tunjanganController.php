@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use App\pegawaiModel;
+use Input ;
+use Illuminate\Http\Request ;
 use App\tunjanganModel;
+use App\tunjangan_pegawaiModel;
+use App\golonganModel;
+use App\jabatanModel;
+use Validator;
 
 class tunjanganController extends Controller
 {
@@ -27,6 +33,11 @@ class tunjanganController extends Controller
     public function create()
     {
         //
+        $tunjangan=tunjanganModel::all();
+        $golongan=golonganModel::all();
+        $jabatan=jabatanModel::all();
+        
+        return view('tunjangan.create',compact('tunjangan','jabatan','golongan'));
     }
 
     /**
@@ -38,6 +49,30 @@ class tunjanganController extends Controller
     public function store(Request $request)
     {
         //
+        $definisi=['kode_tunjangan'=>'required|unique:tunjangan',
+                   'jabatan_id'=>'required',
+                   'golongan_id'=>'required',
+                   ];
+
+
+        $sms=['kode_tunjangan.required'=>'tidak boleh kosong',
+               'kode_tunjangan.unique'=>'data tidak boleh sama',
+               'kode_tunjangan.required'=>'tidak boleh kosong',
+               'jabatan_id.required'=>'tidak boleh kosong',
+               'golongan_id.required'=>'tidak boleh kosong', 
+               
+
+               ];
+        $kirim=Validator::make(Input::all(),$definisi,$sms);
+        if ($kirim->fails()) {
+            return redirect('tunjangan/create')->withErrors($kirim)->withInput();
+        }
+        
+            
+
+       $tunjangan=Request::all();
+        kategori_lemburModel::create($tunjangan);
+        return redirect('tunjangan');
     }
 
     /**
@@ -60,6 +95,10 @@ class tunjanganController extends Controller
     public function edit($id)
     {
         //
+        $tunjangan=tunjanganModel::find($id);
+        $jabatan=jabatanModel::all();
+        $golongan=golonganModel::all();
+        return view('tunjangan.edit',compact('tunjangan','jabatan','golongan'));
     }
 
     /**
@@ -72,6 +111,10 @@ class tunjanganController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $Update=Request::all();
+        $tunjangan=tunjanganModel::find($id);
+        $tunjangan->update($Update);
+        return redirect('tunjangan');
     }
 
     /**
@@ -83,5 +126,7 @@ class tunjanganController extends Controller
     public function destroy($id)
     {
         //
+        tunjanganModel::find($id)->delete();
+        return redirect('tunjangan');
     }
 }

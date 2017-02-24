@@ -10,7 +10,7 @@
                      {!! Form::model($lembur_pegawai,['method'=>'PATCH','route'=>['lembur_pegawai.update',$lembur_pegawai->id]])!!}
                     <div class="col-md-6">
                         <label>Kode Lembur ID</label>
-                        <input type="text" name="kode_jabatan" class="form-control" value="{{$lembur_pegawai->kategori_lemburModel->kode_lembur_id}}" >
+                        <input type="text" name="kode_lembur_id" class="form-control" value="{{$lembur_pegawai->kategori_lemburModel->kode_lembur_id}}" >
                         <span class="help-block">
                             <strong>{{ $errors->first('kode_lembur_id') }}</strong>
                         </span>

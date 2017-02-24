@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class kategori_lemburModel extends Model
 {
 	protected $table='kategori_lembur';
-	protected $fillable=array('kode_lembur','jabatan_id','golongan_id','besaran_uang');
-	protected $visible=array('kode_lembur','jabatan_id','golongan_id','besaran_uang');
+	protected $fillable=array('kode_lembur_id','jabatan_id','golongan_id','besaran_uang');
+	protected $visible=array('kode_lembur_id','jabatan_id','golongan_id','besaran_uang');
 
         public function jabatanModel()
 			{

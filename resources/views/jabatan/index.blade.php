@@ -5,22 +5,21 @@
 <head>
 	<title>Jabatan</title>
     <style type="text/css">
-    body {
+    div{
     background-image: url("large.jpg");
-}
-    .panel-body, .panel-heading{
+    }
+    .panel-body{
+
         color: #663333;
     }
-    .panel-default {
+    .panel-default{
      border: 2px solid black;
      background-color: #99CCFF;
      box-shadow: 7px 7px 10px;
    }
 </style>
 </head>
-
 <body>
-
 <div class="col-md-3 ">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -68,9 +67,9 @@
                     <a class="btn btn-primary form-control" href="{{url('golongan')}}">Golongan</a><hr>
                     <a class="btn btn-danger form-control" href="{{url('pegawai')}}">Pegawai</a><hr>
                     <a class="btn btn-warning form-control" href="{{url('kategori_lembur')}}">Kategori Lembur</a><hr>
-                    <a class="btn btn-info form-control" href="{{url('lemburpegawai')}}">Lembur Pegawai</a><hr>
+                    <a class="btn btn-info form-control" href="{{url('lembur_pegawai')}}">Lembur Pegawai</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
-                    <a class="btn btn-primary form-control" href="{{url('tunjanganpegawai')}}">Tunjangan Karyawan</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('tunjangan_pegawai')}}">Tunjangan Karyawan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('penggajian')}}">Penggajian Karyawan</a><hr>  
   
 
@@ -84,11 +83,9 @@
 	<div class="row">
 		<div class="col-md-8">
 		<div class="panel panel-default">
-			<div class="panel-heading"><center><h1>Jabatan</h1></center></div>
+			<div class="panel-heading"><center><h1><font color="#FF0000">Jabatan</font></h1></center></div>
                 <div class="panel-body">
-                	<table class="table table-striped table bordered table-hover">
-					<table class="table table-hover table-striped ">
-					<tr class="danger">
+					<table class="table table-hover table-striped table-bordered">	
 				<a href="{{url('/jabatan/create')}}"class="btn btn-primary form-control">Tambah Data</a><br><br>
 				{{$jabatan->links()}}
 		<thead>
@@ -105,7 +102,7 @@
 		$no=1;
 		@endphp
 		@foreach($jabatan as $jabatans)
-		<tr>
+		<tr class="bg-danger">
 			<td>{{$no++}}</td>
 			<td>{{$jabatans->kode_jabatan}}</td>
 			<td>{{$jabatans->nama_jabatan}}</td>

@@ -12,10 +12,10 @@
                      {!! Form::open(['url' => 'kategori_lembur']) !!}
                     <div class="form-group">
                         {!! Form::label('kode lembur', 'kode lembur') !!}
-                        {!! Form::text('kode_lembur',null,['class'=>'form-control']) !!}
-                          @if ($errors->has('kode_lembur'))
+                        {!! Form::text('kode_lembur_id',null,['class'=>'form-control']) !!}
+                          @if ($errors->has('kode_lembur_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('kode_lembur') }}</strong>
+                                        <strong>{{ $errors->first('kode_lembur_id') }}</strong>
                                     </span>
                             @endif
                     </div>

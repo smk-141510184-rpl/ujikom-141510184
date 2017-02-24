@@ -1,13 +1,12 @@
 @extends('layouts/app')
 @section('content')
+<div class="container">
 <center><h1>Data tunjangan pegawai</h1></center>
-<hr>
-<div class="col-md-11">
-<table class="table table-striped table bordered table-hover">
-<table class="table table-default">
+<div class="col-md-9">
+<table class="table table-striped table-bordered table-hover">
 <tr class="danger">
 
-<a href="{{url('/tunjangan_pegawai/create')}}"class="btn btn-primary form-control">Tambah Data</a><br><br>
+<a href="{{url('/tunjangan_pegawai/create')}}" class="btn btn-primary form-control">Tambah Data</a><br><br>
 
 	<thead>
 		<tr class="bg-info">
@@ -28,7 +27,7 @@
 		$no=1;
 		@endphp
 		@foreach($tunjangan_pegawai as $tunjangan_pegawais)
-		<tr>
+		<tr class="bg-danger">
 			<td>{{$no++}}</td>
 			<td>{{$tunjangan_pegawais->tunjanganModel->kode_tunjangan}}</td>
 			<td>{{$tunjangan_pegawais->pegawaiModel->nip}}</td>
@@ -37,9 +36,9 @@
 			<td>{{$tunjangan_pegawais->pegawaiModel->golonganModel->nama_golongan}}</td>
 			<td>{{$tunjangan_pegawais->tunjanganModel->status}}</td>
 			<td>{{$tunjangan_pegawais->tunjanganModel->jumlah_anak}}</td>
+			<?php $tunjangan_pegawais->tunjanganModel->besaran_uang=number_format($tunjangan_pegawais->tunjanganModel->besaran_uang,2,',','.') ?>
 			<td>{{$tunjangan_pegawais->tunjanganModel->besaran_uang}}</td>
 		<td><a href="{{route('tunjangan_pegawai.edit',$tunjangan_pegawais->id)}}" class="btn btn-warning">Update</a></td>	
-		</td>
 		<td>
 		{!!Form::open(['method'=>'DELETE','route'=>['tunjangan_pegawai.destroy',$tunjangan_pegawais->id]])!!}
 		
@@ -53,7 +52,6 @@
 	</tbody>
 </table>
 </div>
-
-
+</div>
 
 @endsection

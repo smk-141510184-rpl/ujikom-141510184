@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-@extends('layouts/app')
+@extends('layouts.app')
 @section('content')
 <head>
-	<title>Golongan</title>
-    <title>Jabatan</title>
-    <style type="text/css">
+    <title>Create</title>
+</head>
+<style type="text/css">
     div{
-    background-image: url("large.jpg");
+    background-image: url("gaji.jpg");
     }
     .panel-body{
 
@@ -19,13 +19,13 @@
      box-shadow: 7px 7px 10px;
    }
 </style>
-</head>
 <body>
 <div class="col-md-3 ">
     <div class="panel panel-default">
         <div class="panel-heading">
             <center>
-                <h3><font color="#ff33cc">Halaman</font></h3>
+                <h3>APLIKASI</h3>
+                <h5>PENGGAJIAN</h5>
                 <div class="collapse navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
@@ -64,11 +64,11 @@
 
                 <div class="panel-body" align="center">
                     
-                    <a class="btn btn-success form-control" href="{{url('jabatan')}}">Jabatan</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('jabatan')}}">Jabatan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('golongan')}}">Golongan</a><hr>
-                    <a class="btn btn-danger form-control" href="{{url('pegawai')}}">Pegawai</a><hr>
-                    <a class="btn btn-warning form-control" href="{{url('kategori_lembur')}}">Kategori Lembur</a><hr>
-                    <a class="btn btn-info form-control" href="{{url('lembur_pegawai')}}">Lembur Pegawai</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('pegawai')}}">Pegawai</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('kategori_lembur')}}">Kategori Lembur</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('lembur_pegawai')}}">Lembur Pegawai</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan_pegawai')}}">Tunjangan Karyawan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('penggajian')}}">Penggajian Karyawan</a><hr>  
@@ -79,62 +79,46 @@
         </div>
     </div>
 </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3>Penggajian</h3> </div>
+                    <div class="panel-body">
+                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/penggajian') }}">
+                        {{ csrf_field() }}
 
-
-
-
-
-<hr>
-<div class="container">
-    <div class="row">
-    <div class="col-md-8">
-        <div class="panel panel-default">
-        <div class="panel-heading"><center><h1><font color="#CC6600">Data Golongan</font></h1></center></div>
-        <div class="panel-body">
-            <table class="table table-striped table-bordered table-hover"><a href="{{url('/golongan/create')}}"class="btn btn-primary form-control">Tambah Data</a><br><br>
-            {{$golongan->links()}}   
-    <thead>
-        <tr class="bg-info">
-        <th>No</th>
-        <th><center>kode golongan</center></th>
-        <th><center>nama golongan</center></th>
-        <th><center>besaran uang</center></th>
-        
-        <th colspan="3">Action</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        @php
-        $no=1;
-        @endphp
-        @foreach($golongan as $golongans)
-        <tr class="bg-danger">
-            <td>{{$no++}}</td>
-            <td>{{$golongans->kode_golongan}}</td>
-            <td>{{$golongans->nama_golongan}}</td>
-            <?php $golongans->besaran_uang=number_format($golongans->besaran_uang,2,',','.') ?>
-            <td>{{$golongans->besaran_uang}}</td>
-            
-        <td><a href="{{route('golongan.edit',$golongans->id)}}" class="btn btn-warning">Update</a></td> 
-        <th>
-        {!!Form::open(['method'=>'DELETE','route'=>['golongan.destroy',$golongans->id]])!!}
-        {!!Form::submit('Delete',['class'=>'btn btn-danger'])!!}
-        {!!Form::close()!!}
-        </th>
-        </tr>
-        
-        @endforeach
-
-    </tbody>
-</table>
+                            <div class="col-md-12">
+                                <label for="pegawai">Nama Pegawai</label>
+                                    <select class="col-md-6 form-control" name="pegawai_id">
+                                        @foreach($pegawai as $pegawais)
+                                            <option  value="{{$pegawais->id}}" >{{$pegawais->User->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="help-block">
+                                        {{$errors->first('pegawai_id')}}
+                                    </span>
+                                    <div>
+                                        @if(isset($error))
+                                            Check Lagi Gaji Sudah Ada
+                                        @endif
+                                    </div>
+                            </div>
+                            <div class="col-md-12"></div>
+                            <div class="col-md-12" >
+                                <button type="submit" class="btn btn-primary form-control">Tambah</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-</div>
-        </div>
-    </div>
-</div>
-	
+
 @endsection
 </body>
 </html>
+
+
+

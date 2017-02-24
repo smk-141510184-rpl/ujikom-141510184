@@ -15,7 +15,7 @@ class CreateTableLemburPegawai extends Migration
     {
         Schema::create('lembur_pegawai', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('kode_lembur_id')->unique();
+            $table->integer('kode_lembur')->unique();
             $table->integer('pegawai_id')->unsigned();
             $table->foreign('pegawai_id')->references('id')->on('pegawai')->OnDelete('cascade')->OnUpdate('cascade');
             $table->integer('jumlah_jam');

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-@extends('layouts/app')
+@extends('layouts.app')
 @section('content')
 <head>
-	<title>Golongan</title>
-    <title>Jabatan</title>
+    <title>Edit Tunjangan</title>
     <style type="text/css">
     div{
     background-image: url("large.jpg");
@@ -18,7 +17,7 @@
      background-color: #99CCFF;
      box-shadow: 7px 7px 10px;
    }
-</style>
+    </style>
 </head>
 <body>
 <div class="col-md-3 ">
@@ -68,9 +67,9 @@
                     <a class="btn btn-primary form-control" href="{{url('golongan')}}">Golongan</a><hr>
                     <a class="btn btn-danger form-control" href="{{url('pegawai')}}">Pegawai</a><hr>
                     <a class="btn btn-warning form-control" href="{{url('kategori_lembur')}}">Kategori Lembur</a><hr>
-                    <a class="btn btn-info form-control" href="{{url('lembur_pegawai')}}">Lembur Pegawai</a><hr>
+                    <a class="btn btn-info form-control" href="{{url('lemburpegawai')}}">Lembur Pegawai</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
-                    <a class="btn btn-primary form-control" href="{{url('tunjangan_pegawai')}}">Tunjangan Karyawan</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('tunjanganpegawai')}}">Tunjangan Karyawan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('penggajian')}}">Penggajian Karyawan</a><hr>  
   
 
@@ -79,62 +78,61 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-<hr>
 <div class="container">
     <div class="row">
-    <div class="col-md-8">
-        <div class="panel panel-default">
-        <div class="panel-heading"><center><h1><font color="#CC6600">Data Golongan</font></h1></center></div>
-        <div class="panel-body">
-            <table class="table table-striped table-bordered table-hover"><a href="{{url('/golongan/create')}}"class="btn btn-primary form-control">Tambah Data</a><br><br>
-            {{$golongan->links()}}   
-    <thead>
-        <tr class="bg-info">
-        <th>No</th>
-        <th><center>kode golongan</center></th>
-        <th><center>nama golongan</center></th>
-        <th><center>besaran uang</center></th>
-        
-        <th colspan="3">Action</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        @php
-        $no=1;
-        @endphp
-        @foreach($golongan as $golongans)
-        <tr class="bg-danger">
-            <td>{{$no++}}</td>
-            <td>{{$golongans->kode_golongan}}</td>
-            <td>{{$golongans->nama_golongan}}</td>
-            <?php $golongans->besaran_uang=number_format($golongans->besaran_uang,2,',','.') ?>
-            <td>{{$golongans->besaran_uang}}</td>
-            
-        <td><a href="{{route('golongan.edit',$golongans->id)}}" class="btn btn-warning">Update</a></td> 
-        <th>
-        {!!Form::open(['method'=>'DELETE','route'=>['golongan.destroy',$golongans->id]])!!}
-        {!!Form::submit('Delete',['class'=>'btn btn-danger'])!!}
-        {!!Form::close()!!}
-        </th>
-        </tr>
-        
-        @endforeach
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">update tunjangan</div>
+                <div class="panel-body">
 
-    </tbody>
-</table>
-        </div>
-        
-</div>
+                {!! Form::model($tunjangan_pegawai,['method'=>'PATCH','route'=>['tunjangan_pegawai.update',$tunjangan_pegawai->id]])!!}
+                     <div class="form-group">
+                        {!! Form::label('kode tunjangan', 'kode tunjangan') !!}
+                        {!! Form::text('kode_tunjangan_id',null,['class'=>'form-control']) !!}
+                          @if ($errors->has('kode_tunjangan_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('kode_tunjangan_id') }}</strong>
+                                    </span>
+                            @endif
+                    </div>
+                     <div class="col-md-6 col-sm-6 ">
+                     <label for="Jabatan">Jabatan</label>
+                        <select class="form-control" col-md-7 col-sx-12 name="jabatan_id">
+                            @foreach ($jabatan as $jabatans)
+                            <option value="{{$jabatans->id}}">{{ $jabatans->nama_jabatan}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
+                      <div class="col-md-6 col-sm-6">
+                      <label for="Golongan">Golongan</label>
+                        <select class="form-control" col-md-7 col-sx-12 name="golongan_id">
+                            @foreach ($golongan as $jabatans)
+                            <option value="{{$jabatans->id}}">{{ $jabatans->nama_golongan}}</option>
+                            @endforeach
+                        </select>
+                    </div>                    
+                    <div class=" col-md-6 form-group">
+                        {!! Form::label('besaran uang', 'besaran uang') !!}
+                        {!! Form::text('besaran_uang',null,['class'=>'form-control']) !!}
+                    </div>
+                    @if ($errors->has('besaran_uang'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('besaran_uang') }}</strong>
+                                    </span>
+                    @endif
+                    <div class="form-group">
+                        {!! Form::submit('SAVE', ['class' => 'btn btn-primary form-control']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
         </div>
     </div>
 </div>
-	
+
 @endsection
 </body>
 </html>
+
+
