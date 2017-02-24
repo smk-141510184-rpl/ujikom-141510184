@@ -6,10 +6,7 @@ use App\pegawaiModel;
 use Input ;
 use Illuminate\Http\Request ;
 use App\tunjanganModel;
-<<<<<<< HEAD
 use App\tunjangan_pegawaiModel;
-=======
->>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 use App\golonganModel;
 use App\jabatanModel;
 use Validator;
@@ -98,15 +95,10 @@ class tunjanganController extends Controller
     public function edit($id)
     {
         //
-<<<<<<< HEAD
         $tunjangan=tunjanganModel::find($id);
         $jabatan=jabatanModel::all();
         $golongan=golonganModel::all();
         return view('tunjangan.edit',compact('tunjangan','jabatan','golongan'));
-=======
-        $tunjangan=tunjanganModel::all();
-        return view('tunjangan.edit',compact('tunjangan'));
->>>>>>> 905a8e4812607708fc35103817402f4905128f4e
     }
 
     /**

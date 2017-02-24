@@ -5,8 +5,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                 <center>
-                <h3>MY APPLICATION</h3>
-                    <h5>HALAMAN WEB</h5>
+                <h3>Halaman</h3>
                     <div class="collapse navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
