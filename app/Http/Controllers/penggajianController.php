@@ -51,9 +51,15 @@ class penggajianController extends Controller
     public function create()
     {
         //
+<<<<<<< HEAD
         $pegawai=pegawaiModel::with('User')->get();
         $tunjangan_pegawai=tunjangan_pegawaiModel::all();
         return view('penggajian.create',compact('tunjangan_pegawai','pegawai'));
+=======
+        
+        $tunjangan=tunjangan_pegawaiModel::all();
+        return view('penggajian.create',compact('tunjangan'));
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
     }
 
     /**
@@ -65,6 +71,7 @@ class penggajianController extends Controller
     public function store(Request $request)
     {
 
+<<<<<<< HEAD
         $penggajian = Request::all();
         $tunjangan_pegawai = tunjangan_pegawaiModel::where('pegawai_id',$penggajian['pegawai_id'])->first();
         $kode_tunjangan_id = tunjangan_pegawaiModel::where('pegawai_id', $penggajian['pegawai_id'])->first();
@@ -91,6 +98,68 @@ class penggajianController extends Controller
         $penggajian['status_pengambilan']=0;
         penggajianModel::create($penggajian);
         
+=======
+        $tunjangan=Input::all();
+        dd($tunjangan);
+        $pegawai=pegawaiModel::all();
+        $lembur_pegawai=lembur_pegawaiModel::all();
+
+        if(isset($pegawai->lembur_pegawai->first()->id))
+
+        {
+
+            $penggajian['lembur_pegawai_id'] = $pegawai->tunjangan_pegawai->id;
+            $kategori_lembur_id = $pegawai->lembur_pegawai->first()->kategori_lembur_id;
+            $kategori_lembur = kategori_lemburModel::where('id',$kategori_lembur_id)->first();
+            $penggajian['jumlah_jam_lembur']=0;
+            $penggajian['jumlah_uang_lembur']=0;
+            $uang_lembur = $kategori_lembur;
+            foreach ($pegawai->lembur_pegawai as $data) {
+                $penggajian['jumlah_jam_lembur']+=$data->jumlah_jam;
+                $penggajian['jumlah_uang_lembur']+=$kategori_lembur->besaran_uang*$data->jumlah_jam;
+            }
+
+        }
+
+        else
+
+        {
+
+            $penggajian['jumlah_jam_lembur']=0;
+            $penggajian['jumlah_uang_lembur']=0;
+
+        }
+        $gaji_jabatan = $pegawai->jabatan->tunjangan_uang;
+        $gaji_golongan = $pegawai->golongan->tunjangan_uang;
+        if (isset($pegawai->tunjangan_pegawai->id))
+        {
+
+            $penggajian['tunjangan_pegawai_id']=$pegawai->tunjangan_pegawai->id;
+            $tunjangan_pegawai = tunjangan_pegawaiModel::where('id',$pegawai->tunjangan_pegawai->id)->first();
+        if (isset(Tunjangan::where('id',$pegawai->tunjangan_pegawai->kode_tunjangan_id)->first()->besaran_uang)) {
+
+            $tunjangan = tunjanganModel::where('id',$pegawai->tunjangan_pegawai->kode_tunjangan_id)->first()->besaran_uang;
+        }
+        else{
+            $tunjangan = 0;
+        }
+        }
+        else{
+
+            $tunjangan = 0;
+            $penggajian['tunjangan_pegawai_id']=null;
+
+        }
+
+        $penggajian['gaji_pokok'] = $gaji_jabatan + $gaji_golongan;
+        $penggajian['total_gaji'] = $penggajian['gaji_pokok']+$penggajian['jumlah_uang_lembur']+$tunjangan;
+        if(!isset($penggajian['tunjangan_pegawai_id'])){
+            return redirect('penggajian/'.'create'.'/?errors=notunjangan');
+
+        }
+        // dd($penggajian);
+        $penggajian = penggajianModel::create($penggajian);
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
         return redirect('penggajian');
 
     }

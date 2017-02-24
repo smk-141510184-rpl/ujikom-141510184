@@ -30,6 +30,7 @@
 		<tr class="bg-danger">
 			<td>{{$no++}}</td>
 			<td>{{$gaji->tunjangan_pegawaiModel->tunjanganModel->besaran_uang}}</td>
+<<<<<<< HEAD
 			<td>{{$gaji->jumlah_jam_lembur}}</td>
 			<td>{{$gaji->jumlah_uang_lembur}}</td>
 			<td>{{$gaji->gaji_pokok}}</td>
@@ -37,6 +38,20 @@
 			<td></td>
 			<td></td>
 			<td></td>
+=======
+			<td>{{$gaji->$penggajian->jumlah_jam_lembur}}</td>
+			<td>{{$gaji->$penggajian->jumlah_uang_lembur}}</td>
+			<td>{{$gaji->$penggajian->gaji_pokok}}</td>
+			<td>{{$gaji->$penggajian->total_gaji}}</td>
+		<td><a href="{{route('penggajian.edit',$penggajians->id)}}" class="btn btn-warning">Update</a></td>	
+		</td>
+		<td>
+		{!!Form::open(['method'=>'DELETE','route'=>['penggajian.destroy',$gaji->id]])!!}
+		
+		<input type="submit" class="btn btn-danger" onclick="return confirm('anda yakin akan menghapus data?');"value="Delete"> 
+		{!!Form::close()!!}
+		</td>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 		</tr>
 		
 		@endforeach

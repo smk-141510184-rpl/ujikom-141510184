@@ -67,9 +67,15 @@
                     <a class="btn btn-primary form-control" href="{{url('golongan')}}">Golongan</a><hr>
                     <a class="btn btn-danger form-control" href="{{url('pegawai')}}">Pegawai</a><hr>
                     <a class="btn btn-warning form-control" href="{{url('kategori_lembur')}}">Kategori Lembur</a><hr>
+<<<<<<< HEAD
                     <a class="btn btn-info form-control" href="{{url('lembur_pegawai')}}">Lembur Pegawai</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan_pegawai')}}">Tunjangan Karyawan</a><hr>
+=======
+                    <a class="btn btn-info form-control" href="{{url('lemburpegawai')}}">Lembur Pegawai</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('tunjanganpegawai')}}">Tunjangan Karyawan</a><hr>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
                     <a class="btn btn-primary form-control" href="{{url('penggajian')}}">Penggajian Karyawan</a><hr>  
   
 
@@ -84,7 +90,11 @@
 <div class="row">
 	<div class="col-md-9">
 		<div class="panel panel-default">
+<<<<<<< HEAD
 			<div class="panel-heading"><center><h1><font color="#FF0000">Pegawai</font></h1></center></div>
+=======
+			<div class="panel-heading"><center><h1><font color="#FF0000">Lembur Pegawai</font></h1></center></div>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
 					<a href="{{url('/pegawai/create')}}"class="btn btn-primary form-control">Tambah Data</a>
@@ -105,7 +115,11 @@
 						$no=1;
 						@endphp
 						@foreach($pegawai as $pegawais)
+<<<<<<< HEAD
 						<tr class="bg-danger">
+=======
+						<tr>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 							<td>{{$pegawais->nip}}</td>
 							<td>{{$pegawais->User->email}}</td>
 							<td>{{$pegawais->User->permision}}</td>

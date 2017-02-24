@@ -1,11 +1,21 @@
 @extends('layouts/app')
 @section('content')
 <div class="container">
+<<<<<<< HEAD
 <center><h1>Data tunjangan pegawai</h1></center>
 <div class="col-md-9">
 <table class="table table-striped table-bordered table-hover">
 <tr class="danger">
 
+=======
+<div class="col-md-10">
+	<div class="panel panel-default">
+	<div class="panel-heading">
+		<center><h1>Data tunjangan pegawai</h1></center>
+	</div>
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-hover">
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 <a href="{{url('/tunjangan_pegawai/create')}}" class="btn btn-primary form-control">Tambah Data</a><br><br>
 
 	<thead>
@@ -52,6 +62,16 @@
 	</tbody>
 </table>
 </div>
+<<<<<<< HEAD
 </div>
+=======
+
+
+		</div>
+	</div>
+</div>
+
+
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 
 @endsection

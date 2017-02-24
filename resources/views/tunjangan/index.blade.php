@@ -67,9 +67,15 @@
                     <a class="btn btn-primary form-control" href="{{url('golongan')}}">Golongan</a><hr>
                     <a class="btn btn-danger form-control" href="{{url('pegawai')}}">Pegawai</a><hr>
                     <a class="btn btn-warning form-control" href="{{url('kategori_lembur')}}">Kategori Lembur</a><hr>
+<<<<<<< HEAD
                     <a class="btn btn-info form-control" href="{{url('lembur_pegawai')}}">Lembur Pegawai</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan_pegawai')}}">Tunjangan Karyawan</a><hr>
+=======
+                    <a class="btn btn-info form-control" href="{{url('lemburpegawai')}}">Lembur Pegawai</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
+                    <a class="btn btn-primary form-control" href="{{url('tunjanganpegawai')}}">Tunjangan Karyawan</a><hr>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
                     <a class="btn btn-primary form-control" href="{{url('penggajian')}}">Penggajian Karyawan</a><hr>  
   
 
@@ -105,15 +111,23 @@
 						$no=1;
 						@endphp
 						@foreach($tunjangan as $tunjangans)
+<<<<<<< HEAD
 					<tr class="bg-danger">
+=======
+					<tr>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 						<td>{{$no++}}</td>
 						<td>{{$tunjangans->kode_tunjangan}}</td>
 						<td>{{$tunjangans->jabatanModel->nama_jabatan}}</td>
 						<td>{{$tunjangans->golonganModel->nama_golongan}}</td>
 						<td>{{$tunjangans->status}}</td>
 						<td>{{$tunjangans->jumlah_anak}}</td>
+<<<<<<< HEAD
 						<?php $tunjangans->besaran_uang=number_format($tunjangans->besaran_uang,2,',','.') ?>
                         <td>{{$tunjangans->besaran_uang}}</td>
+=======
+						<td>{{$tunjangans->besaran_uang}}</td>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
 					<td><a href="{{route('tunjangan.edit',$tunjangans->id)}}" class="btn btn-warning">Update</a></td>	
 					<td>
 					{!!Form::open(['method'=>'DELETE','route'=>['tunjangan.destroy',$tunjangans->id]])!!}

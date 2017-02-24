@@ -68,7 +68,11 @@
                     <a class="btn btn-primary form-control" href="{{url('golongan')}}">Golongan</a><hr>
                     <a class="btn btn-danger form-control" href="{{url('pegawai')}}">Pegawai</a><hr>
                     <a class="btn btn-warning form-control" href="{{url('kategori_lembur')}}">Kategori Lembur</a><hr>
+<<<<<<< HEAD
                     <a class="btn btn-info form-control" href="{{url('lembur_pegawai')}}">Lembur Pegawai</a><hr>
+=======
+                    <a class="btn btn-info form-control" href="{{url('lemburpegawai')}}">Lembur Pegawai</a><hr>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
                     <a class="btn btn-primary form-control" href="{{url('tunjangan')}}">Tunjangan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('tunjangan_pegawai')}}">Tunjangan Karyawan</a><hr>
                     <a class="btn btn-primary form-control" href="{{url('penggajian')}}">Penggajian Karyawan</a><hr>  
@@ -109,11 +113,18 @@
         $no=1;
         @endphp
         @foreach($golongan as $golongans)
+<<<<<<< HEAD
         <tr class="bg-danger">
             <td>{{$no++}}</td>
             <td>{{$golongans->kode_golongan}}</td>
             <td>{{$golongans->nama_golongan}}</td>
             <?php $golongans->besaran_uang=number_format($golongans->besaran_uang,2,',','.') ?>
+=======
+        <tr>
+            <td>{{$no++}}</td>
+            <td>{{$golongans->kode_golongan}}</td>
+            <td>{{$golongans->nama_golongan}}</td>
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
             <td>{{$golongans->besaran_uang}}</td>
             
         <td><a href="{{route('golongan.edit',$golongans->id)}}" class="btn btn-warning">Update</a></td> 

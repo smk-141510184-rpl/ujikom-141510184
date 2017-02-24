@@ -89,6 +89,7 @@
                         {{ csrf_field() }}
 
                             <div class="col-md-12">
+<<<<<<< HEAD
                                 <label for="pegawai">Nama Pegawai</label>
                                     <select class="col-md-6 form-control" name="pegawai_id">
                                         @foreach($pegawai as $pegawais)
@@ -97,6 +98,16 @@
                                     </select>
                                     <span class="help-block">
                                         {{$errors->first('pegawai_id')}}
+=======
+                                <label for="Jabatan">Nama Pegawai</label>
+                                    <select class="col-md-6 form-control" name="tunjangan_pegawai_id">
+                                        @foreach($tunjangan as $tunjangans)
+                                            <option  value="{{$tunjangans->id}}" >{{$tunjangans->pegawaiModel->User->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="help-block">
+                                        {{$errors->first('tunjangan_pegawai_id')}}
+>>>>>>> 905a8e4812607708fc35103817402f4905128f4e
                                     </span>
                                     <div>
                                         @if(isset($error))
